@@ -228,16 +228,82 @@
             font-size: 30px;
             color: #000;
         }
+        /* Основное меню для десктопной версии */
+        nav {
+            margin-right: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Выезжающее меню для мобильной версии */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 200;
+            position: relative; /* Обязательно для кликабельности */
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start; /* Сдвигаем элементы к левому краю */
+            background-color: rgba(0, 0, 0, 0.9);
+            position: absolute; /* Меню будет выпадать, а не покрывать весь экран */
+            top: 60px;
+            left: 0;
+            width: 250px;
+            padding-top: 20px;
+            z-index: 150;
+            transition: max-height 0.3s ease; /* Анимация выпадания */
+            max-height: 0; /* Начальное состояние — свернутое меню */
+            overflow: hidden; /* Прячем содержимое при сворачивании */
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .mobile-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav.open {
+            max-height: 300px; /* Высота для раскрытого меню */
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 padding: 10px;
+                
             }
             header img {
                 height: 40px;
             }
             nav {
                 margin: 0;
+                display: none;
+            }
+            .hamburger {
+                display: block;
             }
             nav a {
                 display: block;
@@ -278,6 +344,11 @@
 
     <header>
         <img src="logo.png" alt="Логотип Осетинского землячества">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <nav>
             <a href="#events">Анонсы мероприятий</a>
             <a href="#about">О землячестве</a>
@@ -285,6 +356,14 @@
             <a href="#contacts">Контакты</a>
         </nav>
     </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#events">Анонсы мероприятий</a>
+        <a href="#about">О землячестве</a>
+        <a href="#leaders">Руководство</a>
+        <a href="#contacts">Контакты</a>
+    </div>
     <br>
     <br>
     <br>
@@ -389,6 +468,10 @@
         function flipCard(card) {
             const leader = card.querySelector('.leader');
             leader.classList.toggle('is-flipped');
+        }
+        function toggleMenu() {
+            var mobileNav = document.getElementById("mobileNav");
+            mobileNav.classList.toggle("open");
         }
     </script>
 
