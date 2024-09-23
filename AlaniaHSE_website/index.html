@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аланское землячество НИУ ВШЭ</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        nav {
+            margin-right: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        section {
+            padding: 80px 20px; 
+            color: #212121;
+        }
+        section h2 {
+            font-size: 32px;
+        }
+        #contacts p {
+            font-size: 20px;
+        }
+        #events h2 {
+            text-align: center;
+            font-size: 40px;
+        }
+        #events img {
+            height: 360px;
+            width: 480px;
+            border-radius: 15px;
+        }
+        #events {
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .event-details {
+            padding-left: 500px;
+            margin-top: -375px;
+        }
+        .event-details p {
+            font-size: 18px;
+        }
+        #about {
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        #about h2 {
+            font-size: 40px;
+            text-align: center;
+            
+        }
+        .about p {
+            font-size: 24px;
+            line-height: 1.6;
+            text-align: justify;
+            color: #333;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .event, .contact {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .leader-list {
+            display: flex;
+            overflow-x: auto;
+            padding: 15px 0;
+        }
+        .leader-list::-webkit-scrollbar {
+            display: none; 
+        }
+        .leader-card {
+            perspective: 1000px;
+            margin-right: 20px;
+        }
+
+        .leader {
+            width: 300px; 
+            height: 400px; 
+            position: relative;
+            transform-style: preserve-3d; 
+            transition: transform 0.6s; 
+        }
+
+        .leader.is-flipped {
+            transform: rotateY(180deg); 
+        }
+
+        .leader-front, .leader-back {
+            position: absolute;
+            width: 100%;
+            height: 100%; 
+            backface-visibility: hidden; 
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .leader-front {
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+
+        .leader-front img {
+            width: 220px;
+            height: 240px; 
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .leader-back {
+            background-size: cover; 
+            background-position: center; 
+            position: relative; 
+            color: white;
+            transform: rotateY(180deg); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px; 
+            overflow: hidden; 
+        }
+
+        .leader-back::before {
+            content: ""; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(1.2px);
+            z-index: 1; 
+        }
+
+        .leader-back h4, .leader-back p {
+            position: relative; 
+            z-index: 2;
+            text-align: center; 
+        }
+        .event-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .event-link a {
+            background-color: #26252d;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px; 
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .event-link a:hover {
+            background-color: #231a24;
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
+        }
+        .event-link a:active {
+            transform: translateY(0); 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .map {
+            padding-top: 150px;
+        }
+        .map h4 {
+            font-size: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+        .hero__link {
+            margin-right: 10px;
+
+            font-size: 30px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Логотип Осетинского землячества">
+        <nav>
+            <a href="#events">Анонсы мероприятий</a>
+            <a href="#about">О землячестве</a>
+            <a href="#leaders">Руководство</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <section id="events">
+        <h2>Анонсы мероприятий</h2>
+        <div class="event-container">
+            <img src="event-cover.jpg" alt="Осенний бал 2024">
+            <div class="event-details">
+                <h3>Вечеринка в Осетинской общине</h3>
+                <p><strong>Дата:</strong> 27 сентября 2024 года</p>
+                <p><strong>Время:</strong> 18:00 - 21:00</p>
+                <p>Рады сообщить, что 27 сентября состоится встреча осетин Вышки в Московской осетинской общине! 
+                    Будем знакомиться, есть самые вкусные осетинские пироги Москвы. 
+                    Отвечать на оставшиеся вопросы о Вышке 
+                    Танцевать и уютно проводить время! </p>
+
+            </div>
+            
+            <div class="map">
+                <h4>Местоположение:</h4>
+                <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/moskovskaya_osetinskaya_obshchina/1087433950/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московская осетинская община</a><a href="https://yandex.ru/maps/213/moscow/category/community_organization/184106274/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Общественная организация в Москве</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.597288%2C55.784030&mode=search&oid=1087433950&ol=biz&z=17.22" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+                <!-- <iframe src="" 
+                        width="300" 
+                        height="300" 
+                        frameborder="0" 
+                        style="border-radius: 50%;"></iframe> -->   
+            </div>
+            
+        </div>
+        <!-- <div class="event-link">
+            <a href="events.html">Посмотреть все мероприятия</a>
+        </div> -->
+    </section>
+
+    <section id="about">
+        <h2>О землячестве</h2>
+        <div class="about">
+            <p>Аланское землячество НИУ ВШЭ — это дружное сообщество студентов из Осетии, объединенных общей культурой, традициями и стремлением к развитию. Мы активно участвуем в жизни университета, организовываем мероприятия, поддерживаем культурные связи и укрепляем дружбу среди студентов.</p>
+            <p>Каждый год мы проводим различные мероприятия: от культурных вечеров до спортивных мероприятий и тематических балов, которые привлекают не только осетинских студентов, но и всех, кто интересуется нашей культурой.</p>
+            <p>Присоединяйтесь к нам, чтобы стать частью большого и дружного сообщества, где ценят традиции и поддерживают новые инициативы!</p>
+        </div>
+    </section>
+
+    <section id="leaders">
+        <h2>Руководство</h2>
+        <div class="leader-list">
+            <div class="leader-card" onclick="flipCard(this)">
+                <div class="leader">
+                    <div class="leader-front">
+                        <img src="leader1.jpg" alt="Руководитель 1">
+                        <h4>Виктория Кантемирова</h4>
+                        <p>Председатель</p>
+                    </div>
+                    <div class="leader-back" style="background-image: url('leader1.jpg')">
+                        <h4>Виктория Кантемирова</h4>
+                        <p>Она активно участвует в организации мероприятий и взаимодействует с членами сообщества.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="leader-card" onclick="flipCard(this)">
+                <div class="leader">
+                    <div class="leader-front">
+                        <img src="leader2.jpg" alt="Руководитель 2">
+                        <h4>Ирина Абаева</h4>
+                        <p>Заместитель председателя</p>
+                    </div>
+                    <div class="leader-back" style="background-image: url('leader2.jpg')">
+                        <h4>Ирина Абаева</h4>
+                        <p>Она занимается координацией мероприятий и привлечением новых членов.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="leader-card" onclick="flipCard(this)">
+                <div class="leader">
+                    <div class="leader-front">
+                        <img src="leader3.jpg" alt="Руководитель 3">
+                        <h4>Сармат Козаев</h4>
+                        <p>Организатор мероприятий</p>
+                    </div>
+                    <div class="leader-back" style="background-image: url('leader3.jpg')">
+                        <h4>Сармат Козаев</h4>
+                        <p>Он отвечает за организацию различных культурных мероприятий.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <h2>Подписывайтесь на нас в социальных сетях:</h2>
+        <div class="contact">
+            <a class="hero__link" href="https://t.me/alaniahse"><i class='bx bxl-telegram'></i></a>
+            <a class="hero__link" href="https://www.instagram.com/alaniahse?igsh=dHB3YTRpcjRrNDE2"><i class='bx bxl-instagram-alt'></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Аланское землячество НИУ ВШЭ. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function flipCard(card) {
+            const leader = card.querySelector('.leader');
+            leader.classList.toggle('is-flipped');
+        }
+    </script>
+
+</body>
+</html>
