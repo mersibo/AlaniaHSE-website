@@ -228,6 +228,50 @@
             font-size: 30px;
             color: #000;
         }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+            header img {
+                height: 40px;
+            }
+            nav {
+                margin: 0;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+                padding: 10px;
+            }
+            section {
+                padding: 20px;
+            }
+            #events img {
+                height: auto;
+                width: 100%;
+            }
+            .event-details {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+            .leader-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .leader-card {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .map iframe {
+                width: 100%;
+                height: auto;
+            }
+            .event-link a {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
 <body>
