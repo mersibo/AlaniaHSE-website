@@ -592,30 +592,45 @@
         let startX, endX; 
 
         
-        function handleTouchStart(event) {
-            startX = event.touches[0].clientX; 
-        }
-
-        function handleTouchMove(event) {
-            endX = event.touches[0].clientX; 
-        }
-
-        function handleTouchEnd(event) {
-            const threshold = 50; 
-
-           
-            if (startX - endX > threshold) {
-                nextSlide('events'); 
-            } else if (endX - startX > threshold) {
-                prevSlide('events');
-            }
-        }
-
-        
         const eventContainer = document.querySelector('.event-container');
-        eventContainer.addEventListener('touchstart', handleTouchStart);
-        eventContainer.addEventListener('touchmove', handleTouchMove);
-        eventContainer.addEventListener('touchend', handleTouchEnd);
+        const slides = document.querySelectorAll('.event-slide');
+        let currentIndex = 0;
+    
+        function showSlide(index) {
+            eventContainer.style.transform = `translateX(-${index * 100}%)`;
+            updateDots(index);
+        }
+    
+        function updateDots(index) {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+    
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+    
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+    
+        // Свайп функционал для мобильных устройств
+        let startX = 0;
+        eventContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+    
+        eventContainer.addEventListener('touchend', (e) => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) { // свайп влево
+                nextSlide();
+            } else if (startX < endX - 50) { // свайп вправо
+                prevSlide();
+            }
+        });
     </script>
 
 </body>
