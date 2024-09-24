@@ -334,16 +334,13 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                width: 100vw; /* Устанавливаем ширину на 100% видимой области */
-                overflow-x: hidden; /* Убираем горизонтальный скролл */
-            }
             header {
                 flex-direction: column;
                 padding: 10px;
+                
             }
             .prev, .next {
-                display: none;
+                display: none; /* Убираем стрелки на мобильных */
             }
             header img {
                 height: 50px;
@@ -363,24 +360,24 @@
             section {
                 padding: 20px;
             }
-            .event-container {
-                display: flex;
-                overflow: hidden; /* Убедитесь, что это значение установлено, чтобы скрыть переполнение */
-                width: 100vw; /* Устанавливаем ширину контейнера на 100% видимой области */
-            }
-
-            .event-slide {
-                min-width: 100vw; /* Каждый слайд занимает всю ширину экрана */
-                transition: transform 0.3s ease-in-out; /* Плавный переход */
-            }
             #events {
-                width: 100vw;
-                overflow-x: hidden;
+                width: 100vw; 
+                padding: 0; 
+                margin: 0 auto; 
             }
-
             #events img {
                 height: auto;
                 width: 100%;
+            }
+            .event-container {
+                width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
+                overflow-x: scroll; /* Включаем горизонтальный скролл для свайпов */
+                scroll-snap-type: x mandatory; /* Активируем функцию свайпов */
+                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+            }
+        
+            .event-slide {
+                scroll-snap-align: start; /* Привязываем каждую слайд-карточку */
             }
             .event-details {
                 padding-left: 0;
@@ -394,21 +391,16 @@
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-            .map {
-                padding-top: 30px;
-                width: 100%;
-                height: 300px;
-                overflow: hidden;
-            }
-
             .map iframe {
                 width: 100%;
-                height: 100%;
-                border: none;
+                
             }
             .event-link a {
                 font-size: 16px;
                 padding: 10px 20px;
+            }
+            .map {
+            padding-top: 30px;
             }
         }
 
