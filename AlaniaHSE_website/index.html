@@ -334,73 +334,83 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 10px;
-                
-            }
-            .prev, .next {
-                display: none; 
-            }
-            header img {
-                height: 50px;
-            }
-            nav {
-                margin: 0;
-                display: none;
-            }
-            .hamburger {
-                display: block;
-            }
-            nav a {
-                display: block;
-                margin: 5px 0;
-                padding: 10px;
-            }
-            section {
-                padding: 20px;
-            }
-            .event-container {
-                display: flex;
-                scroll-snap-type: x mandatory;
-                overflow-x: scroll;
-                scroll-behavior: smooth; /* Плавный скроллинг */
-            }
-            #events {
-                width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
-                overflow-x: scroll; /* Включаем горизонтальный скролл для свайпов */
-                scroll-snap-type: x mandatory; /* Активируем функцию свайпов */
-                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */ 
-            }
-            #events img {
-                height: auto;
-                width: 100%;
-            }
-            .event-details {
-                padding-left: 0;
-                margin-top: 20px;
-            }
-            .leader-list {
-                flex-direction: column;
-                align-items: center;
-            }
-            .leader-card {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            .map iframe {
-                width: 100%;
-                
-            }
-            .event-link a {
-                font-size: 16px;
-                padding: 10px 20px;
-            }
-            .map {
-                padding-top: 30px;
-                width: 100vw;
-            }
+        header {
+            flex-direction: column;
+            padding: 10px;
         }
+        .prev, .next {
+            display: none;
+        }
+        header img {
+            height: 50px;
+        }
+        nav {
+            margin: 0;
+            display: none;
+        }
+        .hamburger {
+            display: block;
+        }
+        nav a {
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+        }
+        section {
+            padding: 20px;
+        }
+        .event-container {
+            display: flex;
+            scroll-snap-type: x mandatory;
+            overflow-x: auto; /* Изменил scroll на auto */
+            scroll-behavior: smooth; /* Плавный скроллинг */
+            -webkit-overflow-scrolling: touch; /* Плавный скроллинг на iOS */
+            width: 100%; /* Устанавливаем ширину 100% экрана */
+        }
+
+        .event-slide {
+            scroll-snap-align: start; /* Привязываем каждый слайд к началу области видимости */
+            min-width: 100%; /* Занимаем всю ширину экрана */
+            transition: transform 0.3s ease-in-out; /* Плавный переход между слайдами */
+        }
+        #events {
+            width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
+            overflow-x: hidden; /* Прячем горизонтальный скролл для остальных элементов */
+        }
+        #events img {
+            height: auto;
+            width: 100%;
+        }
+        .event-details {
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        .leader-list {
+            flex-direction: column;
+            align-items: center;
+        }
+        .leader-card {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+        .map {
+            padding-top: 30px;
+            width: 100%; /* Ширина карты на 100% экрана */
+            height: 300px; /* Фиксированная высота карты */
+            overflow: hidden; /* Отключаем overflow */
+        }
+
+        .map iframe {
+            width: 100%; /* Ширина карты на 100% контейнера */
+            height: 100%; /* Высота карты на 100% контейнера */
+            border: none; /* Убираем рамки */
+        }
+        .event-link a {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    }
+
     </style>
 </head>
 <body>
@@ -557,85 +567,86 @@
             const leader = card.querySelector('.leader');
             leader.classList.toggle('is-flipped');
         }
+    
         function toggleMenu() {
             var mobileNav = document.getElementById("mobileNav");
             mobileNav.classList.toggle("open");
         }
+    
         let currentSlide = 0;
-
+    
         function showSlide(slideIndex, containerId) {
             const container = document.getElementById(containerId).querySelector('.event-container');
             const slides = container.getElementsByClassName('event-slide');
             const dots = document.getElementById(containerId).querySelectorAll('.dot');
-
+    
             if (slideIndex >= slides.length) currentSlide = 0;
             if (slideIndex < 0) currentSlide = slides.length - 1;
-
+    
             for (let slide of slides) {
                 slide.style.transform = `translateX(-${currentSlide * 100}%)`;
             }
-
+    
             for (let dot of dots) {
                 dot.classList.remove('active');
             }
             dots[currentSlide].classList.add('active');
         }
-
+    
         function nextSlide(containerId) {
             currentSlide++;
             showSlide(currentSlide, containerId);
         }
-
+    
         function prevSlide(containerId) {
             currentSlide--;
             showSlide(currentSlide, containerId);
         }
-
+    
         function setSlide(index, containerId) {
             currentSlide = index;
             showSlide(currentSlide, containerId);
         }
-         
-
-        
+    
+        // Логика для мобильных свайпов в блоке с анонсами
         const eventContainer = document.querySelector('.event-container');
         const slides = document.querySelectorAll('.event-slide');
         let currentIndex = 0;
         let startX = 0;
-
+    
         function showSlide(index) {
             eventContainer.style.transform = `translateX(-${index * 100}%)`;
             updateDots(index);
         }
-
+    
         function updateDots(index) {
             const dots = document.querySelectorAll('.dot');
             dots.forEach(dot => dot.classList.remove('active'));
             dots[index].classList.add('active');
         }
-
+    
         function nextSlide() {
             currentIndex = (currentIndex + 1) % slides.length;
             showSlide(currentIndex);
         }
-
+    
         function prevSlide() {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             showSlide(currentIndex);
         }
-
-        // Логика для мобильных свайпов
+    
+        // Логика для мобильных свайпов в блоке с анонсами
         eventContainer.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
             eventContainer.style.transition = 'none'; // Отключаем анимацию во время свайпа
         });
-
+    
         eventContainer.addEventListener('touchmove', (e) => {
             const touchX = e.touches[0].clientX;
             const moveDiff = startX - touchX;
             eventContainer.style.transform = `translateX(-${(currentIndex * 100) + (moveDiff / window.innerWidth) * 100}%)`;
         });
-
+    
         eventContainer.addEventListener('touchend', (e) => {
             const endX = e.changedTouches[0].clientX;
             eventContainer.style.transition = 'transform 0.5s ease'; // Возвращаем плавный переход
@@ -647,6 +658,6 @@
                 showSlide(currentIndex); // Если свайп слишком мал, остаемся на том же слайде
             }
         });
-    </script>
+    </script    
 </body>
 </html>
