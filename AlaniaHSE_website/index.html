@@ -335,7 +335,7 @@
 
         @media (max-width: 768px) {
             body {
-                width: 100vw; /* Устанавливаем ширину на 100% видимой области */
+                width: 100vw;
                 overflow-x: hidden; /* Убираем горизонтальный скролл */
             }
             header {
@@ -343,7 +343,7 @@
                 padding: 10px;
             }
             .prev, .next {
-                display: none;
+                display: none; /* Скрываем кнопки на мобильной версии */
             }
             header img {
                 height: 50px;
@@ -369,19 +369,18 @@
                 overflow-x: auto;
                 scroll-behavior: smooth;
                 -webkit-overflow-scrolling: touch;
-                width: 100vw; /* Устанавливаем ширину контейнера 100vw, чтобы он занимал всю ширину экрана */
+                width: 100vw; /* Контейнер на всю ширину экрана */
+                padding-bottom: 20px; /* Чтобы избежать перекрытия контента */
             }
-
             .event-slide {
                 scroll-snap-align: start;
-                min-width: 100vw; /* Устанавливаем ширину слайда на 100% экрана */
+                min-width: 100vw; /* Слайд занимает всю ширину экрана */
                 transition: transform 0.3s ease-in-out;
             }
             #events {
                 width: 100vw;
                 overflow-x: hidden;
             }
-
             #events img {
                 height: auto;
                 width: 100%;
@@ -404,7 +403,6 @@
                 height: 300px;
                 overflow: hidden;
             }
-
             .map iframe {
                 width: 100%;
                 height: 100%;
