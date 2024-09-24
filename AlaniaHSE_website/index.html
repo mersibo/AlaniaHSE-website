@@ -334,115 +334,76 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                margin: 0;
-                padding: 0;
-                overflow-x: hidden; /* Убираем горизонтальный скролл */
-            }
-        
             header {
                 flex-direction: column;
                 padding: 10px;
+                
             }
-        
-            .prev, .next {
-                display: none; /* Убираем стрелки на мобильных */
-            }
-        
             header img {
                 height: 50px;
             }
-        
             nav {
                 margin: 0;
                 display: none;
             }
-        
             .hamburger {
                 display: block;
             }
-        
             nav a {
                 display: block;
                 margin: 5px 0;
                 padding: 10px;
             }
-        
             section {
                 padding: 20px;
             }
-        
+            .prev, .next {
+                display: none; /* Убираем стрелки на мобильных */
+            }
+
+            .event-container {
+                width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
+                overflow-x: scroll; /* Включаем горизонтальный скролл для свайпов */
+                scroll-snap-type: x mandatory; /* Активируем функцию свайпов */
+                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+            }
+
+            .event-slide {
+                scroll-snap-align: start; /* Привязываем каждую слайд-карточку */
+            }
             #events {
                 width: 100vw; 
                 padding: 0; 
                 margin: 0 auto; 
             }
-        
             #events img {
                 height: auto;
                 width: 100%;
             }
-        
-            .event-container {
-                width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
-                overflow-x: hidden; /* Скрываем горизонтальный скролл */
-                scroll-snap-type: x mandatory; /* Активируем функцию свайпов */
-                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-                display: flex; /* Используем flex для упрощения позиционирования */
-                transition: transform 0.5s ease; /* Плавный переход при смене слайда */
-            }
-        
-            .event-slide {
-                width: 100vw; /* Устанавливаем ширину слайда на 100% экрана */
-                flex: 0 0 auto; /* Не позволяйте слайдам растягиваться */
-                scroll-snap-align: start; /* Привязываем каждую слайд-карточку */
-            }
-        
             .event-details {
                 padding-left: 0;
                 margin-top: 20px;
             }
-        
             .leader-list {
                 flex-direction: column;
                 align-items: center;
             }
-        
             .leader-card {
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-        
             .map iframe {
                 width: 100%;
+                
             }
-        
             .event-link a {
                 font-size: 16px;
                 padding: 10px 20px;
             }
-        
             .map {
-                padding-top: 30px;
-            }
-        
-            .dot {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: #ccc; /* Серый цвет для точек */
-                margin: 0 5px;
-                cursor: pointer;
-            }
-        
-            .dot.active {
-                background: #333; /* Темный цвет для активной точки */
+            padding-top: 30px;
             }
         }
-
-
-
     </style>
 </head>
 <body>
@@ -527,7 +488,6 @@
         </div>
     </section>
     
-    
 
     <section id="about">
         <h2>О землячестве</h2>
@@ -596,63 +556,57 @@
     </footer>
 
     <script>
+        
+        function flipCard(card) {
+            const leader = card.querySelector('.leader');
+            leader.classList.toggle('is-flipped');
+        }
+    
+        function toggleMenu() {
+            var mobileNav = document.getElementById("mobileNav");
+            mobileNav.classList.toggle("open");
+        }
+    
+
         const eventContainer = document.querySelector('.event-container');
         const slides = document.querySelectorAll('.event-slide');
         let currentIndex = 0;
-        let startX = 0;
-        let isDragging = false;
-    
+
         function showSlide(index) {
-            // Ограничение индекса
-            currentIndex = (index + slides.length) % slides.length;
-            eventContainer.style.transition = 'transform 0.5s ease'; // Возвращаем плавный переход
-            eventContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            updateDots(currentIndex);
+            eventContainer.style.transform = `translateX(-${index * 100}%)`;
+            updateDots(index);
         }
-    
+
         function updateDots(index) {
             const dots = document.querySelectorAll('.dot');
             dots.forEach(dot => dot.classList.remove('active'));
             dots[index].classList.add('active');
         }
-    
+
         function nextSlide() {
-            showSlide(currentIndex + 1);
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
         }
-    
+
         function prevSlide() {
-            showSlide(currentIndex - 1);
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
         }
-    
+
         // Свайп функционал для мобильных устройств
+        let startX = 0;
         eventContainer.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
-            eventContainer.style.transition = 'none'; // Отключаем анимацию во время свайпа
-            isDragging = true;
         });
-    
-        eventContainer.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-    
-            const touchX = e.touches[0].clientX;
-            const moveDiff = startX - touchX;
-            eventContainer.style.transform = `translateX(-${(currentIndex * 100) + (moveDiff / window.innerWidth) * 100}%)`;
-        });
-    
+
         eventContainer.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-    
-            const endX = e.changedTouches[0].clientX;
+            let endX = e.changedTouches[0].clientX;
             if (startX > endX + 50) { // свайп влево
                 nextSlide();
             } else if (startX < endX - 50) { // свайп вправо
                 prevSlide();
-            } else {
-                showSlide(currentIndex); // Если свайп слишком мал, остаемся на том же слайде
             }
         });
-    </script>
-     
+    </script>  
 </body>
 </html>
