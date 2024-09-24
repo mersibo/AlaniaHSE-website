@@ -334,9 +334,6 @@
         }
 
         @media (max-width: 768px) {
-            html, body {
-                overflow-x: hidden; /* Отключаем горизонтальный скролл на всей странице */
-            }
             header {
                 flex-direction: column;
                 padding: 10px;
@@ -374,15 +371,11 @@
             .event-slide {
                 scroll-snap-align: start; /* Привязываем каждый слайд к началу области видимости */
                 min-width: 100%; /* Занимаем всю ширину экрана */
-                flex: 0 0 100%; /* Устанавливаем каждому слайду 100% ширины */
                 transition: transform 0.3s ease-in-out; /* Плавный переход между слайдами */
             }
             #events {
                 width: 100vw; /* Устанавливаем ширину контейнера на всю ширину экрана */
-                overflow-x: auto; /* Включаем горизонтальный скролл только для контейнера с анонсами */
-                overflow-y: hidden; /* Отключаем вертикальный скролл */
-                scroll-snap-type: x mandatory; /* Обеспечиваем привязку к слайдам при свайпе */
-                -webkit-overflow-scrolling: touch; /* Включаем плавный скролл на iOS */
+                overflow-x: hidden; /* Включаем горизонтальный скролл только для контейнера с анонсами */
             }
 
             #events img {
