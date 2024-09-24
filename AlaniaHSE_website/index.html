@@ -584,20 +584,14 @@
             mobileNav.classList.toggle("open");
         }
     
-        let currentSlideIndex = 0; // Уникальный индекс для текущего слайда
+        let currentSlideIndex = 0; // Индекс текущего слайда
     
         function showEventSlide(index) {
             const slides = document.querySelectorAll('.event-slide');
             const dots = document.querySelectorAll('.dot');
     
             // Ограничение индекса
-            if (index >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (index < 0) {
-                currentSlideIndex = slides.length - 1;
-            } else {
-                currentSlideIndex = index;
-            }
+            currentSlideIndex = (index + slides.length) % slides.length; // Обработка цикличности
     
             // Обновление позиции слайда и точек
             const eventContainer = document.querySelector('.event-container');
