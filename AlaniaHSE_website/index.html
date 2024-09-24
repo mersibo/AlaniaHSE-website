@@ -361,9 +361,10 @@
                 padding: 20px;
             }
             #events {
-                width: 100vw; 
-                padding: 20px; 
-                margin: 0 auto; 
+                width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
+                overflow-x: scroll; /* Включаем горизонтальный скролл для свайпов */
+                scroll-snap-type: x mandatory; /* Активируем функцию свайпов */
+                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */ 
             }
             #events img {
                 height: auto;
