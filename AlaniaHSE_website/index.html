@@ -337,115 +337,65 @@
             header {
                 flex-direction: column;
                 padding: 10px;
+                
             }
-        
             header img {
-                height: 50px;
+                height: 40px;
             }
-        
             nav {
                 margin: 0;
                 display: none;
             }
-        
             .hamburger {
                 display: block;
             }
-        
             nav a {
                 display: block;
                 margin: 5px 0;
                 padding: 10px;
             }
-        
             section {
                 padding: 20px;
             }
-        
-            .prev, .next {
-                display: none; /* Убираем стрелки на мобильных */
-            }
-        
-            .event-container {
-                width: 100vw; /* Растягиваем контейнер на всю ширину экрана */
-                overflow: hidden; /* Скрываем скролл, оставляем только для свайпов */
-                display: flex; /* Используем flex для правильного отображения слайдов */
-                transition: transform 0.5s ease; /* Плавный переход при смене слайда */
-                scroll-snap-type: x mandatory; /* Активируем функцию свайпов */
-                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-            }
-        
-            .event-slide {
-                width: 100vw; /* Устанавливаем ширину слайда на 100% экрана */
-                scroll-snap-align: start; /* Привязываем каждую слайд-карточку */
-                flex: none; /* Не позволяйте слайдам растягиваться */
-            }
-        
-            #events {
-                width: 100vw; 
-                padding: 0; 
-                margin: 0 auto; 
-            }
-        
             #events img {
                 height: auto;
                 width: 100%;
             }
-        
             .event-details {
                 padding-left: 0;
                 margin-top: 20px;
             }
-        
             .leader-list {
                 flex-direction: column;
                 align-items: center;
             }
-        
             .leader-card {
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-        
             .map iframe {
                 width: 100%;
+                
             }
-        
             .event-link a {
                 font-size: 16px;
                 padding: 10px 20px;
             }
-        
             .map {
-                padding-top: 30px;
-            }
-        
-            .dot {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: #ccc; /* Серый цвет для точек */
-                margin: 0 5px;
-                cursor: pointer;
-            }
-        
-            .dot.active {
-                background: #333; /* Темный цвет для активной точки */
+            padding-top: 30px;
             }
         }
-
     </style>
 </head>
 <body>
 
     <header>
         <img src="logo.png" alt="Логотип Осетинского землячества">
-        <!-- <div class="hamburger" onclick="toggleMenu()">
+        <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
             <div></div>
-        </div> -->
+        </div>
         <nav>
             <a href="#events">Анонсы мероприятий</a>
             <a href="#about">О землячестве</a>
@@ -454,13 +404,13 @@
         </nav>
     </header>
 
-    <!-- Мобильное меню
+    <!-- Мобильное меню -->
     <div class="mobile-nav" id="mobileNav">
         <a href="#events">Анонсы мероприятий</a>
         <a href="#about">О землячестве</a>
         <a href="#leaders">Руководство</a>
         <a href="#contacts">Контакты</a>
-    </div> -->
+    </div>
     <br>
     <br>
     <br>
@@ -587,61 +537,76 @@
     </footer>
 
     <script>
-        
         function flipCard(card) {
             const leader = card.querySelector('.leader');
             leader.classList.toggle('is-flipped');
         }
-    
         function toggleMenu() {
             var mobileNav = document.getElementById("mobileNav");
             mobileNav.classList.toggle("open");
         }
-    
+        let currentSlide = 0;
 
+        function showSlide(slideIndex, containerId) {
+            const container = document.getElementById(containerId).querySelector('.event-container');
+            const slides = container.getElementsByClassName('event-slide');
+            const dots = document.getElementById(containerId).querySelectorAll('.dot');
+
+            if (slideIndex >= slides.length) currentSlide = 0;
+            if (slideIndex < 0) currentSlide = slides.length - 1;
+
+            for (let slide of slides) {
+                slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+
+            for (let dot of dots) {
+                dot.classList.remove('active');
+            }
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide(containerId) {
+            currentSlide++;
+            showSlide(currentSlide, containerId);
+        }
+
+        function prevSlide(containerId) {
+            currentSlide--;
+            showSlide(currentSlide, containerId);
+        }
+
+        function setSlide(index, containerId) {
+            currentSlide = index;
+            showSlide(currentSlide, containerId);
+        }
+        let startX, endX; 
+
+        
+        function handleTouchStart(event) {
+            startX = event.touches[0].clientX; 
+        }
+
+        function handleTouchMove(event) {
+            endX = event.touches[0].clientX; 
+        }
+
+        function handleTouchEnd(event) {
+            const threshold = 50; 
+
+           
+            if (startX - endX > threshold) {
+                nextSlide('events'); 
+            } else if (endX - startX > threshold) {
+                prevSlide('events');
+            }
+        }
+
+        
         const eventContainer = document.querySelector('.event-container');
-        const slides = document.querySelectorAll('.event-slide');
-        let currentIndex = 0;
+        eventContainer.addEventListener('touchstart', handleTouchStart);
+        eventContainer.addEventListener('touchmove', handleTouchMove);
+        eventContainer.addEventListener('touchend', handleTouchEnd);
+    </script>
 
-        function showSlide(index) {
-            // Убедитесь, что индекс корректен
-            if (index < 0 || index >= slides.length) {
-                return; // Прерываем, если индекс вне диапазона
-            }
-            eventContainer.style.transform = `translateX(-${index * 100}%)`;
-            updateDots(index);
-        }
-
-        function updateDots(index) {
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        // Свайп функционал для мобильных устройств
-        let startX = 0;
-        eventContainer.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-
-        eventContainer.addEventListener('touchend', (e) => {
-            let endX = e.changedTouches[0].clientX;
-            if (startX > endX + 50) { // свайп влево
-                nextSlide();
-            } else if (startX < endX - 50) { // свайп вправо
-                prevSlide();
-            }
-        });
-    </script>  
 </body>
 </html>
