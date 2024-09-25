@@ -382,12 +382,12 @@
             margin-bottom: 20px;
         }
 
-        /* Позиционирование карточек в форме треугольника */
-        .department-card:nth-child(2) {
-            position: relative;
-            top: -50px; /* Центральную карточку поднимаем вверх */
-        }
         @media screen and (min-width: 1024px) {
+            /* Позиционирование карточек в форме треугольника */
+            .department-card:nth-child(2) {
+                position: relative;
+                top: -50px; /* Центральную карточку поднимаем вверх */
+            }
             .departments-container {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -443,9 +443,13 @@
             }
             .department-container {
                 display: flex;
-                overflow-x: auto;
-                padding: 15px 0;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+
+            }
+            .department-card {
+                margin-bottom: 20px;
+                margin-right: 0px;
             }
             nav a {
                 display: block;
@@ -638,7 +642,7 @@
                     <div class="leader-front">
                         <img src="leader2.jpg" alt="Руководитель 2">
                         <h4>Ирина Абаева</h4>
-                        <p>Руководитель внутреннего отдела/p>
+                        <p>Руководитель внутреннего отдела</p>
                     </div>
                     <div class="leader-back" style="background-image: url('leader2.jpg')">
                         <h4>Ирина Абаева</h4>
@@ -651,7 +655,7 @@
                     <div class="leader-front">
                         <img src="leader4.jpg" alt="Руководитель 2">
                         <h4>Лолита Галаова</h4>
-                        <p>Руководитель SMM отдела Землячества</p>
+                        <p>Руководитель SMM отдела</p>
                     </div>
                     <div class="leader-back" style="background-image: url('leader4.jpg')">
                         <h4>Лолита Галаова</h4>
