@@ -443,13 +443,15 @@
                 text-align: center;
             }
             .department-container {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: column; /* Ставим все блоки в столбик */
+                align-items: center; /* Выравниваем карточки по центру */
                 justify-content: center;
-                overflow-x: auto;
+                overflow-x: hidden; /* Отключаем горизонтальный скролл */
             }
             .department-card {
                 margin-bottom: 20px;
+                width: 90%; /* Увеличиваем ширину карточек на мобильных устройствах */
+                max-width: 350px; /* Ограничиваем максимальную ширину карточек */
             }
             nav a {
                 display: block;
