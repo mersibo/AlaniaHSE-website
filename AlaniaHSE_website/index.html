@@ -334,6 +334,10 @@
         }
 
         @media (max-width: 768px) {
+            .prev, .next {
+                display: none; 
+            }
+
             header {
                 flex-direction: column;
                 padding: 10px;
@@ -360,6 +364,18 @@
             #events img {
                 height: auto;
                 width: 100%;
+            }
+            .event-container {
+                flex-direction: column; /* Горизонтальный показ слайдов */
+                width: 100vw;
+            }
+        
+            .event-slide {
+                min-width: 100vw; /* Растягиваем анонс на всю ширину экрана */
+            }
+        
+            .event-carousel {
+                width: 100vw; /* Устанавливаем ширину карусели на 100% экрана */
             }
             .event-details {
                 padding-left: 0;
