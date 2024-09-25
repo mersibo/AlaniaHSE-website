@@ -11,12 +11,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Устанавливаем высоту на 100% для body и html */
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover; /* Фон заполняет весь экран */
+            background-attachment: fixed; /* Фиксированное положение на десктопе */
+            min-height: 100%; /* Минимальная высота — 100% экрана */
         }
         header {
             background-color: rgba(0, 0, 0, 0.7); 
@@ -414,8 +423,9 @@
                 display: none; 
             }
             body {
-                background-size: contain;
-                
+                background-size: contain; /* Сохраняем пропорции на мобильных устройствах */
+                background-attachment: scroll; /* Фон будет прокручиваться на мобильных */
+                background-position: top center; /* Смещаем фон вверх, чтобы он лучше выглядел на мобильных */
             }
             header {
                 flex-direction: column;
