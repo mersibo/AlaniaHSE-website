@@ -59,6 +59,15 @@
         section h2 {
             font-size: 32px;
         }
+        #contacts {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
         #contacts p {
             font-size: 20px;
         }
@@ -79,11 +88,12 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
         .event-details {
-            padding-left: 500px;
-            margin-top: -375px;
+            text-align: center;
+            /* padding-left: 500px;
+            margin-top: -375px; */
         }
         .event-details p {
-            font-size: 18px;
+            font-size: 28px;
         }
         #about {
             margin-top: 50px;
@@ -122,9 +132,9 @@
         }
         .leader-list {
             display: flex;
-            overflow-x: auto;
             padding: 15px 0;
             justify-content: center;
+            margin-left: 17px;
         }
         .leader-list::-webkit-scrollbar {
             display: none; 
@@ -385,7 +395,48 @@
             height: 100px;
             margin-bottom: 20px;
         }
+        .logo {
+            cursor: pointer;
+            width: 50px; /* Установи размер логотипа */
+            height: auto;
+        }
 
+        /* Стили для меню */
+        .menu {
+            position: absolute;
+            top: 60px; /* Укажи позицию под логотипом */
+            left: -250px; /* Изначально меню скрыто за экраном */
+            width: 200px;
+            background-color: #333;
+            padding: 10px;
+            transition: left 0.3s ease; /* Плавный переход */
+            z-index: 1000; /* Чтобы меню было поверх контента */
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            margin: 10px 0;
+        }
+
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Открытое меню на десктопе */
+        .menu.open {
+            left: 0;
+        }
         @media screen and (min-width: 1024px) {
             /* Позиционирование карточек в форме треугольника */
             .department-card:nth-child(2) {
@@ -498,18 +549,31 @@
                 height: auto;
                 width: auto;
             }
+            .menu {
+                left: 50%; /* В центре экрана */
+                transform: translateX(-50%);
+                width: 100%; /* Ширина меню на всю ширину экрана */
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            .menu.open {
+                left: 50%;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="Логотип Осетинского землячества">
-<!--         <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div> -->
+        <div class="logo" onclick="toggleMenu()">
+            <img src="logo.png" alt="Логотип">
+        </div>
+        <nav id="menu" class="menu">
+            <ul>
+                <li><a href="events.html">Мероприятия</a></li>
+            </ul>
+        </nav>
         <nav>
             <a href="#events">Анонсы мероприятий</a>
             <a href="#about">О землячестве</a>
@@ -531,9 +595,9 @@
     <section id="events">
         <h2>Анонсы мероприятий</h2>
         <div class="event-carousel">
-            <button class="prev" onclick="prevSlide('events')">❮</button>
+            <!-- <button class="prev" onclick="prevSlide('events')">❮</button> -->
             <div class="event-container">
-                <div class="event-slide">
+                <!-- <div class="event-slide">
                     <img src="event1.jpg" alt="Вечеринка в Осетинской общине">
                     <div class="event-details">
                         <h3>Вечеринка в Осетинской общине</h3>
@@ -546,19 +610,14 @@
                     </div>
                     <div class="map">
                         <h4>Местоположение:</h4>
-                        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/moskovskaya_osetinskaya_obshchina/1087433950/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московская осетинская община</a><a href="https://yandex.ru/maps/213/moscow/category/community_organization/184106274/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Общественная организация в Москве</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.597288%2C55.784030&mode=search&oid=1087433950&ol=biz&z=17.22" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-                        <!-- <iframe src="" 
-                                width="300" 
-                                height="300" 
-                                frameborder="0" 
-                                style="border-radius: 50%;"></iframe> -->   
+                        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/moskovskaya_osetinskaya_obshchina/1087433950/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московская осетинская община</a><a href="https://yandex.ru/maps/213/moscow/category/community_organization/184106274/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Общественная организация в Москве</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.597288%2C55.784030&mode=search&oid=1087433950&ol=biz&z=17.22" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>   
                     </div>
-                </div>
+                </div> -->
                 <div class="event-slide">
-                    <img src="event2.jpg" alt="Футбол">
+                    <!-- <img src="event2.jpg" alt="Футбол"> -->
                     <div class="event-details">
-                        <h3>Турнир по футболу</h3>
-                        <p><strong>Дата:</strong> 29 сентября 2024 года</p>
+                        <p>На данный момент предстоящих мероприятий нет.</p>
+                        <!-- <p><strong>Дата:</strong> 29 сентября 2024 года</p>
                         <p><strong>Время:</strong> 14:00-17:30</p>
                         <p>Очень рады сообщить вам, что 29 сентября состоится групповой этап Кубка Осетинского землячества по футболу среди осетинских студентов московских ВУЗов. Команда от нашего землячества также принимает участие.
                             Наши футболисты были бы рады Вашей поддержке!
@@ -566,21 +625,16 @@
                     </div>
                     <div class="map">
                         <h4>Местоположение:</h4>
-                        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/futbolny_tsentr_cityfootball/108605004390/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Футбольный центр CityFootball</a><a href="https://yandex.ru/maps/213/moscow/category/sports_center/184107313/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Спортивный комплекс в Москве</a><a href="https://yandex.ru/maps/213/moscow/category/stadium/184107315/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Стадион в Москве</a><iframe src="https://yandex.ru/map-widget/v1/org/futbolny_tsentr_cityfootball/108605004390/?ll=37.617385%2C55.695433&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-                        <!-- <iframe src="" 
-                                width="300" 
-                                height="300" 
-                                frameborder="0" 
-                                style="border-radius: 50%;"></iframe> -->   
-                    </div>
+                        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/futbolny_tsentr_cityfootball/108605004390/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Футбольный центр CityFootball</a><a href="https://yandex.ru/maps/213/moscow/category/sports_center/184107313/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Спортивный комплекс в Москве</a><a href="https://yandex.ru/maps/213/moscow/category/stadium/184107315/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Стадион в Москве</a><iframe src="https://yandex.ru/map-widget/v1/org/futbolny_tsentr_cityfootball/108605004390/?ll=37.617385%2C55.695433&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>   
+                    </div> -->
                 </div>
             </div>
-            <button class="next" onclick="nextSlide('events')">❯</button>
+            <!-- <button class="next" onclick="nextSlide('events')">❯</button> -->
         </div>
-        <div class="dots">
+        <!-- <div class="dots">
             <span class="dot" onclick="setSlide(0, 'events')"></span>
             <span class="dot" onclick="setSlide(1, 'events')"></span>
-        </div>
+        </div> -->
     </section>
     
 
@@ -694,9 +748,10 @@
             leader.classList.toggle('is-flipped');
         }
         function toggleMenu() {
-            var mobileNav = document.getElementById("mobileNav");
-            mobileNav.classList.toggle("open");
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("open"); /* Добавляем/убираем класс "open" */
         }
+        
         let currentSlide = 0;
 
         function showSlide(slideIndex, containerId) {
