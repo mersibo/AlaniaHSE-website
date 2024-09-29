@@ -401,16 +401,16 @@
             height: auto;
         }
 
-        /* Стили для меню */
         .menu {
-            position: absolute;
-            top: 60px; /* Укажи позицию под логотипом */
-            left: -250px; /* Изначально меню скрыто за экраном */
+            position: fixed;
+            top: 60px;
+            left: 0;
             width: 200px;
             background-color: #333;
             padding: 10px;
-            transition: left 0.3s ease; /* Плавный переход */
-            z-index: 1000; /* Чтобы меню было поверх контента */
+            transition: transform 0.3s ease; /* Плавный переход */
+            transform: translateX(-100%); /* Изначально скрываем меню за экраном */
+            z-index: 1000;
         }
 
         .menu ul {
@@ -433,9 +433,9 @@
             text-decoration: underline;
         }
 
-        /* Открытое меню на десктопе */
+        /* Меню открывается */
         .menu.open {
-            left: 0;
+            transform: translateX(0); /* Меню выезжает на экран */
         }
         @media screen and (min-width: 1024px) {
             /* Позиционирование карточек в форме треугольника */
@@ -551,13 +551,14 @@
             }
             .menu {
                 width: 100%; /* Меню занимает всю ширину экрана на мобильных устройствах */
-                top: 60px; /* Позиционируем меню под логотипом */
-                left: -100%; /* Изначально меню скрыто */
-                text-align: center;
+                left: 0;
+                top: 60px;
+                transform: translateY(-100%); /* Изначально скрываем меню */
+                transition: transform 0.3s ease;
             }
 
             .menu.open {
-                left: 0; /* При открытии меню полностью видно */
+                transform: translateY(0); /* Открываем меню */
             }
         }
     </style>
