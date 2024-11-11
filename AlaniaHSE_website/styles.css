@@ -63,7 +63,7 @@ section h2 {
     font-size: 40px;
 }
 #events h3 {
-    font-size: 30px;
+    font-size: 35px;
 }
 #events img {
     height: 360px;
@@ -498,7 +498,6 @@ nav a:hover {
     }
     #events h3 {
         text-align: center;
-        font-size: 35px;
     }
     .hamburger {
         display: block;
