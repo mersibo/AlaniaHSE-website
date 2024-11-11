@@ -2,7 +2,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('/alaniahse/alaniahse/static/images/background.png') no-repeat center center fixed;
+    background: url('background.png') no-repeat center center fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; /* Фон заполняет весь экран */
