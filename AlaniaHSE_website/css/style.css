@@ -373,32 +373,7 @@ body {
     width: 100%;
 }
 
-.hamburger {
-    display: none;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 10px;
-    margin-left: auto;
-    z-index: 1001;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #000;
-    margin: 5px 0;
-    transition: all 0.3s ease;
-}
-
-/* .nav-menu {
-    display: flex;
-} */
-
-/* Мобильная адаптация - переработанная версия */
 @media (max-width: 1200px) {
-    /* Общие исправления */
     html, body {
         width: 100%;
         overflow-x: hidden;
@@ -413,12 +388,16 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* Полная переработка шапки */
+    /* Скрываем навигационные кнопки */
+    .nav-menu {
+        display: none;
+    }
+    
+    /* Центрируем логотип */
     .header_shapka {
         flex-direction: column;
         padding: 15px 0;
         align-items: center;
-        gap: 10px;
     }
     
     .logo {
@@ -427,22 +406,7 @@ body {
         padding: 0;
     }
     
-    .nav-button {
-        width: 90%;
-        max-width: 300px;
-        margin: 5px 0;
-        padding: 10px;
-        font-size: 22px;
-        text-align: center;
-        border-radius: 0;
-    }
-    
-    .nav-button:hover {
-        transform: none;
-        padding: 10px;
-    }
-    
-    /* Идеальное выравнивание блока "О нас" */
+    /* Блок "О нас" */
     .about_us {
         flex-direction: column-reverse;
         height: auto;
@@ -471,7 +435,7 @@ body {
         display: block;
     }
     
-    /* Анонсы - безупречная сетка */
+    /* Блок "Анонсы" */
     .anonces {
         width: 100%;
         padding: 30px 0;
@@ -505,7 +469,7 @@ body {
         margin-top: 20px;
     }
     
-    /* Структура - идеальные карточки */
+    /* Блок "Структура" */
     .structure {
         padding: 0;
     }
@@ -515,6 +479,19 @@ body {
         margin: 0;
         padding: 20px;
         gap: 30px;
+    }
+    
+    /* Переносим заголовок перед карточками */
+    .structure-title-card {
+        order: -1;
+        margin-bottom: 30px;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .structure-title-card img {
+        max-width: 80%;
+        margin: 0 auto;
     }
     
     .structure-column {
@@ -541,7 +518,7 @@ body {
         margin-top: 8px;
     }
     
-    /* Контакты - безупречный центр */
+    /* Блок "Контакты" */
     .contacts1 {
         height: auto;
         padding: 50px 20px;
@@ -568,66 +545,8 @@ body {
     .fa-5x {
         font-size: 2.8em !important;
     }
-
-    .hamburger {
-        display: block;
-    }
     
-    /* Скрываем обычное меню */
-    .nav-menu {
-        position: fixed;
-        top: 100px;
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - 100px);
-        background: #fff;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 30px;
-        transition: right 0.3s ease;
-        z-index: 1000;
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    /* Анимация гамбургера */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    /* Стили для кнопок меню в мобильной версии */
-    .nav-button {
-        width: 80%;
-        margin: 10px 0;
-        font-size: 20px;
-    }
-    
-    /* Структура - перенос заголовка */
-    .structure-cards {
-        flex-direction: column;
-    }
-    
-    .structure-title-card {
-        order: -1;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-    
-    .structure-title-card img {
-        max-width: 80%;
-    }
-    
-    /* Карусель - подготовка для свайпов */
+    /* Подготовка для свайпов */
     .slideshow-container {
         touch-action: pan-y;
         overflow: hidden;
@@ -638,12 +557,8 @@ body {
     }
 }
 
-/* Для очень маленьких экранов (точечная настройка) */
+/* Для очень маленьких экранов */
 @media (max-width: 480px) {
-    .nav-button {
-        font-size: 20px;
-    }
-    
     .about-svg {
         height: 70px;
     }
@@ -663,15 +578,6 @@ body {
     
     .social-icons {
         gap: 25px;
-    }
-
-    .nav-menu {
-        top: 80px;
-        height: calc(100vh - 80px);
-    }
-
-    .hamburger {
-        margin-right: 10px;
     }
 }
 
