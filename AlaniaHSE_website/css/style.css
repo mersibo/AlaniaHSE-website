@@ -72,7 +72,7 @@ body {
 
 .header_shapka {
     display: flex; /* Включаем Flexbox */
-    justify-content: space-between; /* Равномерное распределение элементов */
+    justify-content: space-around; /* Равномерное распределение элементов */
     align-items: center; /* Выравнивание по центру по вертикали */
 }
 
@@ -373,6 +373,29 @@ body {
     width: 100%;
 }
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    margin-left: auto;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #000;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* .nav-menu {
+    display: flex;
+} */
+
 /* Мобильная адаптация - переработанная версия */
 @media (max-width: 1200px) {
     /* Общие исправления */
@@ -545,6 +568,74 @@ body {
     .fa-5x {
         font-size: 2.8em !important;
     }
+
+    .hamburger {
+        display: block;
+    }
+    
+    /* Скрываем обычное меню */
+    .nav-menu {
+        position: fixed;
+        top: 100px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 100px);
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    /* Анимация гамбургера */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* Стили для кнопок меню в мобильной версии */
+    .nav-button {
+        width: 80%;
+        margin: 10px 0;
+        font-size: 20px;
+    }
+    
+    /* Структура - перенос заголовка */
+    .structure-cards {
+        flex-direction: column;
+    }
+    
+    .structure-title-card {
+        order: -1;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .structure-title-card img {
+        max-width: 80%;
+    }
+    
+    /* Карусель - подготовка для свайпов */
+    .slideshow-container {
+        touch-action: pan-y;
+        overflow: hidden;
+    }
+    
+    .slides {
+        user-select: none;
+    }
 }
 
 /* Для очень маленьких экранов (точечная настройка) */
@@ -572,6 +663,15 @@ body {
     
     .social-icons {
         gap: 25px;
+    }
+
+    .nav-menu {
+        top: 80px;
+        height: calc(100vh - 80px);
+    }
+
+    .hamburger {
+        margin-right: 10px;
     }
 }
 
