@@ -1,299 +1,260 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аланское землячество НИУ ВШЭ</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <title>Alania HSE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-
-    <header>
-        <div class="logo" onclick="toggleMenu()">
-            <img src="logo.png" alt="Логотип">
+    <header class="header">
+        <div class="container">
+            <div class="header_shapka">
+                <img src="img/logo.svg" alt="Logo" class="logo">
+                <button class="nav-button">
+                    <a href="#about_section">О НАС</a>
+                </button>
+                <button class="nav-button">
+                    <a href="#anonces_section">АНОНСЫ</a>
+                </button>
+                <button class="nav-button">
+                    <a href="#contacts_section">КОНТАКТЫ</a>
+                </button>
+                <button class="nav-button">
+                    <a href="#structure_section">СТРУКТУРА</a>
+                </button>
+            </div>
         </div>
-        <nav id="menu" class="menu">
-            <ul>
-                <li><a href="events.html">Мероприятия</a></li>
-            </ul>
-        </nav>
-        <nav>
-            <a href="#events">Анонсы мероприятий</a>
-            <a href="#about">О землячестве</a>
-            <a href="#leaders">Руководство</a>
-            <a href="#contacts">Контакты</a>
-        </nav>
     </header>
-
-    <!-- Мобильное меню -->
-<!--     <div class="mobile-nav" id="mobileNav">
-        <a href="#events">Анонсы мероприятий</a>
-        <a href="#about">О землячестве</a>
-        <a href="#leaders">Руководство</a>
-        <a href="#contacts">Контакты</a>
-    </div> -->
-    <br>
-    <br>
-    <br>
-    <section id="events">
-        <h2>Анонсы мероприятий</h2>
-        <div class="event-carousel">
-<!--             <button class="prev" onclick="prevSlide('events')">❮</button> -->
-            <div class="event-container">
-<!--                 <div class="event-slide">
-                    <img src="event1.jpg" alt="Кинопоказ">
-                    <div class="event-details"> 
-                        <h3><i>Показ фильма «Урс дзибатæ»</i></h3>
-                        <p><strong>Дата:</strong> 17 ноября 2024 года</p>
-                        <p><strong>Время:</strong> 19:00 - 21:00</p>
-                        <p>Итак, уважаемые дамы и господа, ждём каждого из вас в стенах Вышки на Покре на показ фильма «Урс дзибатæ»</p
-                        <p>Аудитория R503</p>
-                    </div>
-                    <div class="map">
-                        <h4>Местоположение:</h4>
-                        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/vysshaya_shkola_ekonomiki/1074710983/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Высшая школа экономики</a><a href="https://yandex.ru/maps/213/moscow/category/university/184106140/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ВУЗ в Москве</a><iframe src="https://yandex.ru/map-widget/v1/org/vysshaya_shkola_ekonomiki/1074710983/?ll=37.648232%2C55.753448&z=15" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>                    </div>
-                </div> -->
-                <div class="event-slide">
-                    <img src="event2.jpg" alt="Бот">
-                    <div class="event-details">
-                        <p><strong>Новые мероприятия скоро появятся.</strong></p>
-                        <p>А пока можете занести свои данные в <strong>Базу Осетин ВШЭ</strong>, чтобы нынешние, а главное будущие студенты из Осетии могли найти тех кто учится вместе с ними!</p>
-                        <p>Чтобы это сделать, перейдите в нашего <a class="hero__link" href="https://t.me/AlaniaHSEbot">бота</a>, и после команды start, нажмите кнопку "Записать мои данные". А дальше просто вводите данные, которые попросит бот.</p>
-                        <!-- <p><strong>Дата:</strong> 1-2 ноября 2024 года</p>
-                        <p><strong>Время:</strong> 14:00</p>
-                        <p>Наконец-то близится тот самый день…</p>
-                        <p>HSE UNITY FEST!!! 🌏</p>
-                        <p>Мероприятие, организованное Палатой Национальностей, которое объединяет десятки народов в одно единое целое, дарит эмоции, как студентам, так и преподавателям и сотрудникам Вышки, привносит свет и невероятное количество красок в дождливые осенние будни Вышкинцев 🎨</p>
-                        <p>💃🏻На фестивале у вас будет возможность: <br><br>
-                            - погрузиться в культуру самых разных народов мира <br><br>
-                            - узнать об их традициях <br><br>
-                            - попробовать традиционные блюда <br><br>
-                            - поучаствовать в мастер-классах <br><br>
-                            - насладиться национальными танцами и музыкой <br><br>
-                            
-                        В нашем университете учатся студенты со всего земного шара, поэтому фестиваль продлится целых 2 дня! У вас есть все шансы попасть к нам и испытать незабываемые эмоции🕺🏻</p>
-                        <p>Наше Землячество тоже примет участие в этом фестивале. Мы приготовили для вас вкуснейшие Осетинские пироги, атмосферу и настроение на год вперед + кое-что еще(но об этом вы узнаете только придя на фестиваль🤫). Также наш IT отдел представит продукт, на которым они работали последний месяц!👨🏻‍💻</p>   
-                     -->
-                    </div>
-                    <!-- <div class="map">
-                        <h4>Местоположение:</h4>
-                        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a href="https://yandex.ru/maps/213/moscow/house/pokrovskiy_bulvar_11s6/Z04YcAJhSk0CQFtvfXt0cnpgZA==/?ll=37.651685%2C55.753773&utm_medium=mapframe&utm_source=maps&z=19.83" style="color:#eee;font-size:12px;position:absolute;top:14px;">Покровский бульвар, 11с6 на карте Москвы, ближайшее метро Чкаловская — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.651685%2C55.753773&mode=whatshere&whatshere%5Bpoint%5D=37.651385%2C55.753630&whatshere%5Bzoom%5D=17&z=19.83" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-                    </div> -->
+    <main class="main">
+        <div class="about_us" id="about_section">
+            <!-- Слайд-шоу -->
+            <div class="slideshow-container">
+                <div class="slides">
+                    <img src="img/slide1.jpg" alt="Slide 1">
+                    <img src="img/slide2.jpg" alt="Slide 2">
+                    <img src="img/slide3.jpg" alt="Slide 3">
+                    <img src="img/slide4.jpg" alt="Slide 4">
+                    <img src="img/slide5.jpg" alt="Slide 5">
+                    <img src="img/slide6.jpg" alt="Slide 6">
+                    <img src="img/slide7.jpg" alt="Slide 7">
                 </div>
+                <!-- Кнопки переключения -->
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
             </div>
-<!--             <button class="next" onclick="nextSlide('events')">❯</button> -->
-        </div>
-<!--         <div class="dots">
-            <span class="dot" onclick="setSlide(0, 'events')"></span>
-            <span class="dot" onclick="setSlide(1, 'events')"></span>
-        </div> -->
-    </section>
-    
-
-    <section id="about">
-        <h2>О землячестве</h2>
-        <div class="about">
-            <p>Аланское землячество — это сообщество студентов, объединенных стремлением сохранить и развивать культурное наследие Осетии в стенах Высшей Школы Экономики.</p>
-            <p>Наша цель, создавать пространство для общения, где каждый студент может погрузиться в знакомую атмосферу родной республики, осетинских традиций, найти новых друзей и познакомить с культурой Осетии других студентов Вышки.</p>
-            <p>Присоединяйтесь к нам, чтобы стать частью большого и дружного сообщества, где ценят традиции и поддерживают новые инициативы!</p>
-        </div>
-    </section>
-
-    <section id="departments">
-        <h2>Отделы клуба</h2>
-        <br>
-        <div class="department-container">
-            <div class="department-card">
-                <!-- <img src="vnieshnii-otdel.png" alt="Внешний отдел"> -->
-                <h3>Внешний отдел</h3>
-                <p>Внешний отдел — это амбассадоры осетинской культуры в университете. Они организовывают фестивали, выступления и выставки, где делятся традициями, искусством и историей Осетии с широкой аудиторией.</p>
-                <p>Если у вас есть идеи для сотрудничества или вы хотите присоединиться к внешнему отделу, свяжитесь с <a class="hero__link" href="https://t.me/Kozaev_SV">Сарматом Козаевым</a></p>
-            </div>
-            <div class="department-card">
-                <!-- <img src="vnutrennii-otdel.png" alt="Внутренний отдел"> -->
-                <h3>Внутренний отдел</h3>
-                <p>Внутренний отдел это как хадзар во дворе, место с теплой и дружной атмосферой внутри клуба. Команда отдела отвечает за организацию внутренних мероприятий для членов клуба: культурные вечера, встречи, обсуждения и мастер-классы. </p>
-                <p>Связаться с руководителем внутреннего отдела <a class="hero__link" href="https://t.me/angeliinae">Ангелиной Хасановой</a></p>
-            </div>
-            <div class="department-card">
-                <!-- <img src="smm-otdel.png" alt="SMM-отдел"> -->
-                <h3>SMM-отдел</h3>
-                <p>Отдел SMM занимается онлайн-продвижением клуба, это не просто управление социальными сетями, а возможность проявить креативность и показать культуру Осетии в самых ярких и интересных форматах. </p>
-                <p>Хотите развивать свои навыки в SMM и помогать клубу расти? Свяжитесь с <a class="hero__link" href="https://t.me/qalaova">Лолитой Галаовой</a></p>
-            </div>
-            <div class="department-card">
-                <!-- <img src="smm-otdel.png" alt="SMM-отдел"> -->
-                <h3>IT-отдел</h3>
-                <p>IT-отдел землячества отвечает за техническую поддержку и развитие всех цифровых проектов и онлайн-платформ землячества и автоматизирует многие процессы для улучшения взаимодействия внутри сообщества.</p>
-                <p>Хотите развивать свои навыки в разработке и помогать клубу расти? Свяжитесь с <a class="hero__link" href="https://t.me/ossetin2004">Георгием Атаевым</a></p>
+            <!-- Текст и SVG-надпись -->
+            <div class="text-content">
+                <img src="img/about_BIG.svg" alt="О НАС" class="about-svg">
+                <p>
+                    Аланское землячество – это сообщество студентов, объединенных стремлением сохранить и развивать
+                    культурное наследие Осетии в стенах Высшей Школы Экономики.
+                </p>
+                <p>
+                    Наша цель, создавать пространство для общения, где каждый студент может погрузиться в знакомую
+                    атмосферу родной республики, осетинских традиций, найти новых друзей и познакомить с культурой
+                    Осетии других студентов Вышки.
+                </p>
+                <p>
+                    Присоединяйтесь к нам, чтобы стать частью большого и дружного сообщества, где ценят традиции и
+                    поддерживают новые инициативы!
+                </p>
             </div>
         </div>
-    </section>
-
-    <section id="leaders">
-        <h2>Руководство</h2>
-        <div class="leader-list">
-            <div class="leader-card" onclick="flipCard(this)">
-                <div class="leader">
-                    <div class="leader-front">
-                        <img src="leader1.jpg" alt="Руководитель 1">
-                        <h4>Виктория Кантемирова</h4>
-                        <p>Председатель</p>
+        <div class="anonces" id="anonces_section">
+            <div class="anonces-container">
+                <!-- Левая часть -->
+                <div class="anonces-left">
+                    <!-- Надпись "АНОНСЫ" -->
+                    <div class="anonces-title">
+                        <img src="img/anonces_BIG.svg" alt="АНОНСЫ" class="anonces-svg">
                     </div>
-                    <div class="leader-back" style="background-image: url('leader1.jpg')">
-                        <h4>Виктория Кантемирова</h4>
-                        <p>Виктория отвечает за стратегическое развитие, координацию работы всех отделов и представляет клуб на уровне университета.</p>
+                </div>
+                <!-- Правая часть -->
+                <div class="anonces-right">
+                    <!-- Афиша -->
+                    <div class="anonces-poster">
+                        <img src="img/afisha.svg" alt="Афиша" class="poster-svg">
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-         <div class="leader-list">
-            <div class="leader-card" onclick="flipCard(this)">
-                <div class="leader">
-                    <div class="leader-front">
-                        <img src="leader3.jpg" alt="Руководитель 3">
-                        <h4>Сармат Козаев</h4>
-                        <p>Руководитель внешнего отдела</p>
+        <div class="structure" id="structure_section">
+            <!-- Контейнер для карточек -->
+            <div class="structure-cards">
+                <!-- Левая колонка -->
+                <div class="structure-column">
+                    <!-- Карточка 1 -->
+                    <div class="structure-card">
+                        <div class="structure-photo">
+                            <img src="img/vika_ava.svg" alt="Фото" class="photo">
+                        </div>
+                        <div class="structure-info">
+                            <h2 class="name">КАНТЕМИРОВА ВИКТОРИЯ</h2>
+                            <p class="position">Председатель землячества, сооснователь AlaniaHSE</p>
+                        </div>
                     </div>
-                    <div class="leader-back" style="background-image: url('leader3.jpg')">
-                        <h4>Сармат Козаев</h4>
-                        <p>Сармат принимает активное участие в организации мероприятий</p>
+                    <!-- Карточка 2 -->
+                    <div class="structure-card">
+                        <div class="structure-photo">
+                            <img src="img/lola_ava.svg" alt="Фото" class="photo">
+                        </div>
+                        <div class="structure-info">
+                            <h2 class="name">ГАЛАОВА ЛОЛИТА</h2>
+                            <p class="position">Глава SMM&PR x Design, сооснователь AlaniaHSE</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="leader-card" onclick="flipCard(this)">
-                <div class="leader">
-                    <div class="leader-front">
-                        <img src="leader2.jpg" alt="Руководитель 2">
-                        <h4>Ангелина Хасанова</h4>
-                        <p>Руководитель внутреннего отдела</p>
-                    </div>
-                    <div class="leader-back" style="background-image: url('leader2.jpg')">
-                        <h4>Ангелина Хасанова</h4>
-                        <p>Ангелина занимается координацией мероприятий и привлечением новых участников.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="leader-card" onclick="flipCard(this)">
-                <div class="leader">
-                    <div class="leader-front">
-                        <img src="leader5.jpg" alt="Руководитель 2">
-                        <h4>Георгий Атаев</h4>
-                        <p>Руководитель IT отдела</p>
-                    </div>
-                    <div class="leader-back" style="background-image: url('leader5.jpg')">
-                        <h4>Георгий Атаев</h4>
-                        <p>Георгий занимается созданием и внедрением цифровых продуктов, которыми пользуется землячество.</p>
+                    <!-- Карточка 3 -->
+                    <div class="structure-card">
+                        <div class="structure-photo">
+                            <img src="img/atai_ava.jpg" alt="Фото" class="photo">
+                        </div>
+                        <div class="structure-info">
+                            <h2 class="name">ATAEB ГЕОРГИЙ</h2>
+                            <p class="position">Руководитель IT-отдела AlaniaHSE</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="leader-card" onclick="flipCard(this)">
-                <div class="leader">
-                    <div class="leader-front">
-                        <img src="leader4.jpg" alt="Руководитель 2">
-                        <h4>Лолита Галаова</h4>
-                        <p>Руководитель SMM отдела</p>
-                    </div>
-                    <div class="leader-back" style="background-image: url('leader4.jpg')">
-                        <h4>Лолита Галаова</h4>
-                        <p>Лолита занимается дизайном и продвижением всего что производит SMM отдел</p>
+                <!-- Правая колонка -->
+                <div class="structure-column">
+                    <div class="structure-column">
+                        <!-- Надпись "СТРУКТУРА" -->
+                        <div class="structure-title-card">
+                            <img src="img/structure_BIG.svg" alt="СТРУКТУРА" class="structure-svg">
+                        </div>
+                        <!-- Карточка 4 -->
+                        <div class="structure-card">
+                            <div class="structure-photo">
+                                <img src="img/koz_ava.svg" alt="Фото" class="photo">
+                            </div>
+                            <div class="structure-info">
+                                <h2 class="name">КОЗАЕВ САРМАТ</h2>
+                                <p class="position">Руководитель внешнего отдела AlaniaHSE</p>
+                            </div>
+                        </div>
+                        <!-- Карточка 5 -->
+                        <div class="structure-card">
+                            <div class="structure-photo">
+                                <img src="img/angelina_ava.svg" alt="Фото" class="photo">
+                            </div>
+                            <div class="structure-info">
+                                <h2 class="name">ХАСАНОВА АНГЕЛИНА</h2>
+                                <p class="position">Руководитель внутреннего отдела AlaniaHSE</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-
-    <section id="contacts">
-        <h2>Подписывайтесь на нас в социальных сетях:</h2>
-        <div class="contact">
-            <a class="hero__link" href="https://t.me/alaniahse"><i class='bx bxl-telegram'></i></a>
-            <a class="hero__link" href="https://www.instagram.com/alaniahse?igsh=dHB3YTRpcjRrNDE2"><i class='bx bxl-instagram-alt'></i></a>
+        <div class="contacts1" id="contacts_section">
+            <div class="contacts-content">
+                <p>КОНТАКТЫ</p>
+                <a href="mailto:alaniahse@gmail.com" class="icon-link">
+                    <i class="fa-solid fa-envelope fa-5x" style="color: #3db868;"></i>
+                </a>
+                <p>СЛЕДИТЕ ЗА НАМИ В СОЦИАЛЬНЫХ СЕТЯХ</p>
+                <div class="social-icons">
+                    <a href="https://t.me/alaniahse" target="_blank" class="icon-link">
+                        <i class="fa-brands fa-telegram fa-5x" style="color: #74C0FC;"></i>
+                    </a>
+                    <a href="https://www.instagram.com/alaniahse" target="_blank" class="icon-link">
+                        <i class="fa-brands fa-instagram fa-5x" style="color: #B197FC;"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Аланское землячество НИУ ВШЭ. Все права защищены.</p>
+    </main>
+    <footer class="footer">
+            <p>© 2025. Аланское землячество НИУ ВШЭ. Все права защищены.</p>
     </footer>
-
+    <!-- JS часть для анимации-->
     <script>
-        function flipCard(card) {
-            const leader = card.querySelector('.leader');
-            leader.classList.toggle('is-flipped');
-        }
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.classList.toggle("open"); /* Добавляем/убираем класс "open" */
-        }
-        
         let currentSlide = 0;
+        let isTransitioning = false;
+        const slides = document.querySelector('.slides');
+        const slideItems = document.querySelectorAll('.slides img');
+        const totalSlides = slideItems.length;
 
-        function showSlide(slideIndex, containerId) {
-            const container = document.getElementById(containerId).querySelector('.event-container');
-            const slides = container.getElementsByClassName('event-slide');
-            const dots = document.getElementById(containerId).querySelectorAll('.dot');
+        // Клонируем первый и последний слайды
+        const firstClone = slideItems[0].cloneNode(true);
+        const lastClone = slideItems[totalSlides - 1].cloneNode(true);
 
-            if (slideIndex >= slides.length) currentSlide = 0;
-            if (slideIndex < 0) currentSlide = slides.length - 1;
+        // Добавляем клоны в карусель
+        slides.appendChild(firstClone);
+        slides.insertBefore(lastClone, slideItems[0]);
 
-            for (let slide of slides) {
-                slide.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }
+        // Обновляем коллекцию слайдов
+        const allSlides = document.querySelectorAll('.slides img');
 
-            for (let dot of dots) {
-                dot.classList.remove('active');
-            }
-            dots[currentSlide].classList.add('active');
-        }
+        // Устанавливаем начальную позицию (настоящий первый слайд)
+        slides.style.transform = `translateX(-100%)`;
 
-        function nextSlide(containerId) {
-            currentSlide++;
-            showSlide(currentSlide, containerId);
-        }
+        function goToSlide(index, withAnimation = true) {
+            if (isTransitioning) return;
+            isTransitioning = true;
 
-        function prevSlide(containerId) {
-            currentSlide--;
-            showSlide(currentSlide, containerId);
-        }
-
-        function setSlide(index, containerId) {
+            slides.style.transition = withAnimation ? 'transform 1.5s ease-in-out' : 'none';
             currentSlide = index;
-            showSlide(currentSlide, containerId);
-        }
-        let startX, endX; 
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-        
-        function handleTouchStart(event) {
-            startX = event.touches[0].clientX; 
-        }
-
-        function handleTouchMove(event) {
-            endX = event.touches[0].clientX; 
-        }
-
-        function handleTouchEnd(event) {
-            const threshold = 50; 
-
-           
-            if (startX - endX > threshold) {
-                nextSlide('events'); 
-            } else if (endX - startX > threshold) {
-                prevSlide('events');
+            if (withAnimation) {
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 1500);
+            } else {
+                isTransitioning = false;
             }
         }
 
-        
-        const eventContainer = document.querySelector('.event-container');
-        eventContainer.addEventListener('touchstart', handleTouchStart);
-        eventContainer.addEventListener('touchmove', handleTouchMove);
-        eventContainer.addEventListener('touchend', handleTouchEnd);
-    </script>
+        function nextSlide() {
+            if (currentSlide >= allSlides.length - 1) {
+                // Мгновенно переходим к первому слайду без анимации
+                goToSlide(1, false);
+                // Даем браузеру время на отрисовку
+                setTimeout(() => {
+                    goToSlide(2, true);
+                }, 50);
+            } else {
+                goToSlide(currentSlide + 1, true);
+            }
+        }
 
+        function prevSlide() {
+            if (currentSlide <= 0) {
+                // Мгновенно переходим к последнему слайду без анимации
+                goToSlide(allSlides.length - 2, false);
+                // Даем браузеру время на отрисовку
+                setTimeout(() => {
+                    goToSlide(allSlides.length - 3, true);
+                }, 50);
+            } else {
+                goToSlide(currentSlide - 1, true);
+            }
+        }
+
+        // Автоматическое переключение
+        setInterval(nextSlide, 15000);
+
+        // Обработчик для сброса позиции после анимации
+        slides.addEventListener('transitionend', () => {
+            if (currentSlide === 0) {
+                // Если достигли клона последнего слайда, переходим к настоящему последнему
+                goToSlide(allSlides.length - 2, false);
+            } else if (currentSlide === allSlides.length - 1) {
+                // Если достигли клона первого слайда, переходим к настоящему первому
+                goToSlide(1, false);
+            }
+        });
+
+        // Сброс при ресайзе
+        window.addEventListener('resize', () => {
+            slides.style.transition = 'none';
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        });
+    </script>
 </body>
+
 </html>

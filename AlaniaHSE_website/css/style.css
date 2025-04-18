@@ -1,0 +1,537 @@
+@font-face {
+    font-family: 'Gilroy Bold';
+    src: local('Gilroy Bold'), local('Gilroy-Bold'),
+        url('../fonts/Gilroy-Bold/Gilroy-Bold.woff2') format('woff2'),
+        url('../fonts/Gilroy-Bold/Gilroy-Bold.woff') format('woff'),
+        url('../fonts/Gilroy-Bold/Gilroy-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Gilroy Medium';
+    src: local('Gilroy Medium'), local('Gilroy-Medium'),
+        url('../fonts/Gilroy-Medium/Gilroy-Medium.woff2') format('woff2'),
+        url('../fonts/Gilroy-Medium/Gilroy-Medium.woff') format('woff'),
+        url('../fonts/Gilroy-Medium/Gilroy-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+    font-family: 'Druk Cyr';
+    src: local('Druk Cyr Medium'), local('Druk-Cyr-Medium'),
+        url('../fonts/DrukCyr-Medium/DrukCyr-Medium.woff2') format('woff2'),
+        url('../fonts/DrukCyr-Medium/DrukCyr-Medium.woff') format('woff'),
+        url('../fonts/DrukCyr-Medium/DrukCyr-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0px;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0px;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: #e1e1e1;
+    margin: 0 auto;
+}
+
+:root {
+    --yellow: #FFD700;
+    --dark-gray: #343434;
+    --red: #C10020;
+    --gray: #DADADA;
+}
+
+.header {
+    background-color: #fff; /* Цвет фона, если нужен */
+    padding: 0px; /* Отступы сверху и снизу */
+}
+
+.container {
+    min-height: 100px;
+    margin: 0 auto; /* Центрирование контейнера */
+    padding: 0 0px; /* Отступы слева и справа */
+}
+
+.header_shapka {
+    display: flex; /* Включаем Flexbox */
+    justify-content: space-between; /* Равномерное распределение элементов */
+    align-items: center; /* Выравнивание по центру по вертикали */
+}
+
+/* Стили для логотипа */
+.logo {
+    height: 82px; /* Высота логотипа */
+    width: auto; /* Ширина автоматически подстраивается */
+    margin-right: 350px; /* Отступ справа от логотипа */
+    margin-left: 50px;
+    margin-top: 11px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 20px 10px 0 10px;
+    transition: all 0.3s ease;
+    font-family: 'Druk Cyr', sans-serif;
+    font-size: 40px;
+    color: #000;
+    position: relative;
+    height: 55px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: 2px 0; 
+}
+
+
+.nav-button:hover {
+    background-color: #C10020;
+    color: white;
+    border-radius: 8px; 
+    transform: scale(1.1);
+    padding: 20px 20px;
+}
+
+/* ----------------- */
+
+.about_us {
+    display: flex;
+    height: 600px; /* Высота блока */
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9; /* Цвет фона */
+    font-family: 'Gilroy Bold', sans-serif;
+}
+
+/* Контейнер для слайд-шоу */
+.slideshow-container {
+    width: 50%; /* Ширина слайд-шоу */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Контейнер для изображений */
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out; /* Плавная анимация */
+}
+
+/* Стили для изображений */
+.slides img {
+    width: 100%;
+    height: 600px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезать изображение, чтобы оно заполнило контейнер */
+    flex-shrink: 0;
+}
+
+/* Кнопки переключения */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C10020;/* Цвет стрелок (полупрозрачный черный) */
+    font-weight: bold;
+    font-size: 36px; /* Размер стрелок */
+    transition: 0.3s ease; /* Плавное увеличение */
+    background: none; /* Убираем фон */
+    border: none; /* Убираем границу */
+    padding: 10px; /* Отступы для увеличения области клика */
+}
+
+.prev:hover, .next:hover {
+    color: rgba(0, 0, 0, 1); /* Цвет стрелок при наведении (полностью черный) */
+    transform: translateY(-50%) scale(1.2); /* Увеличение стрелки на 20% */
+}
+
+.prev {
+    left: 10px; /* Отступ слева */
+}
+
+.next {
+    right: 10px; /* Отступ справа */
+}
+
+/* Текстовый блок */
+.text-content {
+    width: 45%; /* Ширина текстового блока */
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* Стили для SVG-надписи */
+.about-svg {
+    width: auto; /* Ширина SVG */
+    height: 127px;
+}
+
+/* Стили для текста */
+.text-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Блок "Анонсы" */
+.anonces {
+    width: 580px; /* Ширина блока */
+    background-color: #f9f9f9; /* Цвет фона */
+    padding: 0px; /* Отступы сверху и снизу */
+}
+
+.anonces-container {
+    width: 550px; /* Фиксированная ширина блока */
+    margin: 0 auto; /* Центрирование блока */
+    display: flex; /* Используем Flexbox для разделения на две части */
+}
+
+/* Левая часть */
+.anonces-left {
+    display: flex;
+    align-items: flex-end; /* Выравнивание по нижнему краю */
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    margin-left: 50px;
+    margin-right: 90px;
+}
+
+/* Надпись "АНОНСЫ" */
+.anonces-title img {
+    width: 359px; /* Ширина SVG (настройте по вашему дизайну) */
+    height: auto; /* Высота автоматически подстраивается */
+}
+
+/* Афиша */
+.anonces-poster {
+    position: relative; /* Для позиционирования кнопки внутри */
+}
+
+.anonces-poster img {
+    width: auto;
+    max-width: 1440px;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Блок "СТРУКТУРА" */
+.structure-block {
+    width: 100%;
+    max-width: 1440px;
+    height: 780px; /* Высота блока */
+    margin: 0 auto; /* Центрирование блока */
+    padding: 40px 0; /* Отступы сверху и снизу */
+    background-color: #f9f9f9; /* Цвет фона */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование по горизонтали */
+}
+
+/* Контейнер для карточек */
+.structure-cards {
+    display: flex;
+    gap: 40px; /* Расстояние между колонками */
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+/* Колонка */
+.structure-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Расстояние между карточками */
+}
+
+/* Карточка */
+.structure-card {
+    display: flex;
+    align-items: center; /* Выравнивание по центру по вертикали */
+    gap: 20px; /* Расстояние между фото и текстом */
+}
+
+/* Фото */
+.structure-photo img {
+    width: 136px; /* Ширина фото (высота букв "СТРУКТУРА") */
+    height: 136px; /* Высота фото */
+    border-radius: 50%; /* Круглая форма */
+    object-fit: cover; /* Обрезать фото, чтобы оно заполнило круг */
+}
+
+/* Информация */
+.structure-info {
+    flex: 1; /* Занимает оставшееся пространство */
+}
+
+/* Имя */
+.structure-info h2 {
+    font-family: 'Druk Cyr', sans-serif; /* Шрифт Druk Cyr */
+    font-size: 50px; /* Размер текста */
+    letter-spacing: 3px;
+    margin: 0; /* Убираем отступы */
+    color: #000; /* Цвет текста */
+}
+
+/* Должность */
+.structure-info p {
+    font-family: 'Gilroy Medium', sans-serif; /* Шрифт Gilroy */
+    font-size: 20px; /* Размер текста */
+    margin: 0; /* Убираем отступы */
+    color: #000; /* Цвет текста */
+}
+
+.contacts1 {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 450px; /* Уменьшили высоту блока */
+    background-color: #161616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Druk Cyr', sans-serif;
+}
+
+.contacts-content {
+    text-align: center;
+    width: 100%;
+}
+
+.contacts1 h1 {
+    font-size: 60px; /* Увеличили размер шрифта заголовка */
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 5px;
+}
+
+.icon-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.icon-link:hover {
+    transform: scale(1.1);
+}
+
+.contacts1 p {
+    font-size: 60px; /* Увеличили размер шрифта текста */
+    margin: 15px 0; /* Уменьшили отступы для текста */
+    letter-spacing: 5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.footer {
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: #000; /* Черный фон */
+    color: rgb(110, 110, 110); /* Цвет текста */
+    font-family: 'Gilroy Medium', sans-serif; /* Шрифт */
+    font-size: 18px; /* Размер шрифта */
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    transition: transform 1.2s ease-in-out; /* Увеличиваем длительность анимации */
+}
+.slides img {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    /* Общие стили */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Шапка */
+    .header_shapka {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .logo {
+        height: 60px;
+        margin: 10px 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .nav-button {
+        font-size: 24px;
+        margin: 5px 0;
+        height: auto;
+        padding: 8px 15px;
+    }
+
+    .nav-button:hover {
+        padding: 8px 15px;
+        transform: none;
+    }
+
+    /* Блок "О нас" */
+    .about_us {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .slideshow-container,
+    .text-content {
+        width: 100%;
+    }
+
+    .slides img {
+        height: 300px;
+    }
+
+    .text-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .about-svg {
+        height: 80px;
+        margin-bottom: 15px;
+    }
+
+    /* Блок "Анонсы" */
+    .anonces {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .anonces-container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .anonces-left,
+    .anonces-right {
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .anonces-title img {
+        width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .anonces-poster img {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Блок "Структура" */
+    .structure-block {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .structure-cards {
+        flex-direction: column;
+        margin: 20px 0;
+        gap: 20px;
+    }
+
+    .structure-column {
+        gap: 20px;
+    }
+
+    .structure-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .structure-info h2 {
+        font-size: 30px;
+        letter-spacing: 1px;
+        margin-top: 10px;
+    }
+
+    .structure-info p {
+        font-size: 16px;
+    }
+
+    /* Блок "Контакты" */
+    .contacts1 {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .contacts1 h1,
+    .contacts1 p {
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+
+    .icon-link {
+        margin: 10px;
+    }
+
+    .fa-5x {
+        font-size: 3em !important;
+    }
+
+    .social-icons {
+        gap: 20px;
+    }
+
+    /* Футер */
+    .footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .structure-info h2 {
+        font-size: 24px;
+    }
+
+    .contacts1 h1,
+    .contacts1 p {
+        font-size: 24px;
+    }
+
+    .fa-5x {
+        font-size: 2.5em !important;
+    }
+}
