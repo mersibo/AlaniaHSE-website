@@ -389,7 +389,7 @@ body {
 
 @media (max-width: 768px) {
     /* Скрываем навигационные кнопки */
-    .nav-menu {
+    .nav-button {
         display: none;
     }
     
