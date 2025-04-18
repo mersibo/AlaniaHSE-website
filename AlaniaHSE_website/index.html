@@ -14,18 +14,25 @@
         <div class="container">
             <div class="header_shapka">
                 <img src="img/logo.svg" alt="Logo" class="logo">
-                <button class="nav-button">
-                    <a href="#about_section">О НАС</a>
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                <button class="nav-button">
-                    <a href="#anonces_section">АНОНСЫ</a>
-                </button>
-                <button class="nav-button">
-                    <a href="#contacts_section">КОНТАКТЫ</a>
-                </button>
-                <button class="nav-button">
-                    <a href="#structure_section">СТРУКТУРА</a>
-                </button>
+                <nav class="nav-menu">
+                    <button class="nav-button">
+                        <a href="#about_section">О НАС</a>
+                    </button>
+                    <button class="nav-button">
+                        <a href="#anonces_section">АНОНСЫ</a>
+                    </button>
+                    <button class="nav-button">
+                        <a href="#contacts_section">КОНТАКТЫ</a>
+                    </button>
+                    <button class="nav-button">
+                        <a href="#structure_section">СТРУКТУРА</a>
+                    </button>
+                </nav>
             </div>
         </div>
     </header>
@@ -171,25 +178,35 @@
             <p>© 2025. Аланское землячество НИУ ВШЭ. Все права защищены.</p>
     </footer>
     <!-- JS часть для анимации-->
-    <script>
-        let currentSlide = 0;
-        let isTransitioning = false;
-        const slides = document.querySelector('.slides');
-        const slideItems = document.querySelectorAll('.slides img');
-        const totalSlides = slideItems.length;
+    <script src="https://unpkg.com/swipe-listener@1.2.0/dist/swipe-listener.min.js"></script>
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
 
-        // Клонируем первый и последний слайды
+    let currentSlide = 0;
+    let isTransitioning = false;
+    let slideInterval;
+    const slides = document.querySelector('.slides');
+    const slideItems = document.querySelectorAll('.slides img');
+
+    if (slides && slideItems.length > 0) {
+        const totalSlides = slideItems.length;
+        
         const firstClone = slideItems[0].cloneNode(true);
         const lastClone = slideItems[totalSlides - 1].cloneNode(true);
 
-        // Добавляем клоны в карусель
         slides.appendChild(firstClone);
         slides.insertBefore(lastClone, slideItems[0]);
 
-        // Обновляем коллекцию слайдов
         const allSlides = document.querySelectorAll('.slides img');
 
-        // Устанавливаем начальную позицию (настоящий первый слайд)
         slides.style.transform = `translateX(-100%)`;
 
         function goToSlide(index, withAnimation = true) {
@@ -211,50 +228,76 @@
 
         function nextSlide() {
             if (currentSlide >= allSlides.length - 1) {
-                // Мгновенно переходим к первому слайду без анимации
                 goToSlide(1, false);
-                // Даем браузеру время на отрисовку
-                setTimeout(() => {
-                    goToSlide(2, true);
-                }, 50);
+                setTimeout(() => goToSlide(2, true), 50);
             } else {
                 goToSlide(currentSlide + 1, true);
             }
+            resetInterval();
         }
 
         function prevSlide() {
             if (currentSlide <= 0) {
-                // Мгновенно переходим к последнему слайду без анимации
                 goToSlide(allSlides.length - 2, false);
-                // Даем браузеру время на отрисовку
-                setTimeout(() => {
-                    goToSlide(allSlides.length - 3, true);
-                }, 50);
+                setTimeout(() => goToSlide(allSlides.length - 3, true), 50);
             } else {
                 goToSlide(currentSlide - 1, true);
             }
+            resetInterval();
         }
 
-        // Автоматическое переключение
-        setInterval(nextSlide, 15000);
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 15000);
+        }
 
-        // Обработчик для сброса позиции после анимации
+        slideInterval = setInterval(nextSlide, 15000);
+
         slides.addEventListener('transitionend', () => {
             if (currentSlide === 0) {
-                // Если достигли клона последнего слайда, переходим к настоящему последнему
                 goToSlide(allSlides.length - 2, false);
             } else if (currentSlide === allSlides.length - 1) {
-                // Если достигли клона первого слайда, переходим к настоящему первому
                 goToSlide(1, false);
             }
         });
 
-        // Сброс при ресайзе
         window.addEventListener('resize', () => {
             slides.style.transition = 'none';
             slides.style.transform = `translateX(-${currentSlide * 100}%)`;
         });
-    </script>
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slides.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        slides.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchStartX - touchEndX > threshold) {
+                nextSlide();
+            } else if (touchEndX - touchStartX > threshold) {
+                prevSlide();
+            }
+        }
+
+        const sliderContainer = document.querySelector('.slideshow-container');
+        if (sliderContainer) {
+            SwipeListener(sliderContainer);
+            sliderContainer.addEventListener('swipe', function(e) {
+                const directions = e.detail.directions;
+                if (directions.left) nextSlide();
+                if (directions.right) prevSlide();
+            });
+        }
+    }
+</script>
 </body>
 
 </html>
