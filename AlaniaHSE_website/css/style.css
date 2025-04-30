@@ -463,8 +463,8 @@ body {
     }
     
     .anonces-poster img {
-        width: 120%;
-        max-width: 1440px;
+        width: 100%;
+        max-width: 110%;
         height: auto;
         margin-top: 20px;
     }
