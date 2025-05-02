@@ -229,6 +229,28 @@ body {
 /* Афиша */
 .anonces-poster {
     position: relative; /* Для позиционирования кнопки внутри */
+    display: inline-block;
+}
+
+.poster-button {
+    font-family: 'Druk Cyr', sans-serif; /* Шрифт Druk Cyr */
+    font-size: 50px; /* Размер текста */
+    letter-spacing: 3px;
+    position: absolute;
+    bottom: 590px; /* Отступ от нижнего края картинки */
+    left: 53%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Точное центрирование */
+    padding: 12px 24px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.poster-button:hover {
+    color: rgb(0, 0, 0);
 }
 
 .anonces-poster img {
@@ -389,7 +411,7 @@ body {
 
 @media (max-width: 768px) {
     /* Скрываем навигационные кнопки */
-    .nav-button {
+    .nav-menu {
         display: none;
     }
     
@@ -464,9 +486,26 @@ body {
     
     .anonces-poster img {
         width: 100%;
-        max-width: 110%;
+        max-width: 970px;
         height: auto;
         margin-top: 20px;
+    }
+
+    .poster-button {
+        font-family: 'Druk Cyr', sans-serif; /* Шрифт Druk Cyr */
+        font-size: 28px; /* Размер текста */
+        letter-spacing: 3px;
+        position: absolute;
+        bottom: 230px; /* Отступ от нижнего края картинки */
+        left: 53%; /* Центрирование по горизонтали */
+        transform: translateX(-50%); /* Точное центрирование */
+        padding: 12px 24px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none; /* Убираем подчеркивание у ссылки */
+        cursor: pointer;
+        transition: background 0.3s;
     }
     
     /* Блок "Структура" */
