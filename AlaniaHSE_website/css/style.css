@@ -217,7 +217,7 @@ body {
     align-items: flex-end; /* Выравнивание по нижнему краю */
     justify-content: flex-start; /* Выравнивание по левому краю */
     margin-left: 50px;
-    margin-right: 90px;
+    margin-right: 500px;
 }
 
 /* Надпись "АНОНСЫ" */
@@ -255,7 +255,7 @@ body {
 
 .anonces-poster img {
     width: auto;
-    max-width: 970px;
+    max-width: 500px;
     height: auto;
     display: flex;
     justify-content: flex-end;
